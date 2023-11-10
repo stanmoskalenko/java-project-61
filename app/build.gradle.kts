@@ -7,7 +7,7 @@ group = "org.app"
 version = "1.0-SNAPSHOT"
 
 application {
-    mainClass.set("app.App")
+    mainClass.set("hexlet.code.App")
 }
 
 repositories {

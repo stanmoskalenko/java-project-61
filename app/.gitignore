@@ -2,7 +2,9 @@ build/
 /.gradle/
 
 ### IntelliJ IDEA ###
-/.idea/
+/.idea/*
+*.iml
+
 
 ### Eclipse ###
 .apt_generated
@@ -28,4 +30,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-

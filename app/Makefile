@@ -3,3 +3,6 @@ run-dist:
 
 lint:
 	./gradlew checkstyleMain
+
+install:
+	./gradlew installDist

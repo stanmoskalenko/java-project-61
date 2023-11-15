@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class Calc implements Actions {
+public class Calc implements Actions, Game {
     private final String name;
     private final Integer index;
 
@@ -48,7 +48,8 @@ public class Calc implements Actions {
         };
     }
 
-    private Map<Integer, Map<String, String>> prepareTrack() {
+    @Override
+    public Map<Integer, Map<String, String>> prepareTrack() {
         Map<Integer, Map<String, String>> track = new HashMap<>();
         var random = new Random();
 

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class Even implements Actions {
+public class Even implements Actions, Game {
     private final String name;
     private final Integer index;
     private static final String GAME_PREVIEW = "Answer 'yes' if the number is even, otherwise answer 'no'.";
@@ -40,7 +40,8 @@ public class Even implements Actions {
         return (num % 2) == 0 ? "yes" : "no";
     }
 
-    private Map<Integer, Map<String, String>> prepareTrack() {
+    @Override
+    public Map<Integer, Map<String, String>> prepareTrack() {
         Map<Integer, Map<String, String>> track = new HashMap<>();
         var random = new Random();
 

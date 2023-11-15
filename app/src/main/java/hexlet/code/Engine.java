@@ -5,7 +5,7 @@ import hexlet.code.actions.Greet;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Engine {
+public final class Engine {
     public static final int ROUND_COUNT = 3;
     private static final String INCORRECT = "'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, %s!!";
 

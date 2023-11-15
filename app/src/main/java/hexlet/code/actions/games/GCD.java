@@ -11,10 +11,10 @@ public class GCD {
     private static final Integer MIN_RANDOM_INT = 1;
     private static final Integer MAX_RANDOM_INT = 100;
 
-    private static final Engine ENGINE = new Engine();
+    private static Engine engine = new Engine();
 
     public static void start() {
-        ENGINE.run(GAME_PREVIEW, prepareTrack());
+        engine.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static String getAnswer(Integer firstOperand, Integer secondOperand) {
@@ -36,7 +36,7 @@ public class GCD {
             var secondOperand = random.nextInt(MIN_RANDOM_INT, MAX_RANDOM_INT);
             var question = firstOperand + " " + secondOperand;
             var answer = getAnswer(firstOperand, secondOperand);
-            var exercise = ENGINE.prepareExercise(question, answer);
+            var exercise = engine.prepareExercise(question, answer);
             track.put(i, exercise);
         }
 

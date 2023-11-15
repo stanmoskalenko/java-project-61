@@ -14,10 +14,10 @@ public class Calc {
     private static final Integer OPERATIONS_START_IDX = 0;
     private static final List<String> OPERATIONS = List.of("+", "-", "*");
 
-    private static final Engine ENGINE = new Engine();
+    private static Engine engine = new Engine();
 
     public static void start() {
-        ENGINE.run(GAME_PREVIEW, prepareTrack());
+        engine.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static String getAnswer(Integer firstOperand, Integer secondOperand, String operation) {
@@ -39,7 +39,7 @@ public class Calc {
             var operation = OPERATIONS.get(random.nextInt(OPERATIONS_START_IDX, OPERATIONS.size()));
             var question = firstOperand + " " + operation + " " + secondOperand;
             var answer = getAnswer(firstOperand, secondOperand, operation);
-            var exercise = ENGINE.prepareExercise(question, answer);
+            var exercise = engine.prepareExercise(question, answer);
             track.put(i, exercise);
         }
 

@@ -6,13 +6,13 @@ public class Greet {
     private static String userName;
 
     private static final String HELLO_PREVIEW = "Welcome to the Brain Games!\nMay I have your name?";
-    private static final Engine ENGINE = new Engine();
+    private static Engine engine = new Engine();
 
     public static String getUserName() {
         if (userName == null) {
-            ENGINE.push(HELLO_PREVIEW);
-            userName = ENGINE.readString();
-            ENGINE.push("Hello, " + userName + "!");
+            engine.push(HELLO_PREVIEW);
+            userName = engine.readString();
+            engine.push("Hello, " + userName + "!");
         }
 
         return userName;
@@ -20,6 +20,6 @@ public class Greet {
 
     public static void start() {
         getUserName();
-        ENGINE.stop();
+        engine.stop();
     }
 }

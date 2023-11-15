@@ -10,7 +10,6 @@ import hexlet.code.actions.games.Prime;
 import hexlet.code.actions.games.Progression;
 
 public class App {
-
     private static final String EXIT = "0";
     private static final String GREET = "1";
     private static final String EVEN = "2";
@@ -18,7 +17,6 @@ public class App {
     private static final String GREATEST = "4";
     private static final String PROGR = "5";
     private static final String PRIME = "6";
-
 
     public static void run() {
         var engine = new Engine();
@@ -35,42 +33,16 @@ public class App {
 
         engine.push(menu);
         var userChoice = engine.readString();
-        engine.push("Your choice: " + userChoice);
 
         switch (userChoice) {
-            case EXIT: {
-                Exit.start();
-                break;
-            }
-            case GREET: {
-                Greet.start();
-                break;
-            }
-            case EVEN: {
-                Even.start();
-                break;
-            }
-            case CALC: {
-                Calc.start();
-                break;
-            }
-            case GREATEST: {
-                GCD.start();
-                break;
-            }
-            case PROGR: {
-                Progression.start();
-                break;
-            }
-            case PRIME: {
-                Prime.start();
-                break;
-            }
-            default: {
-                var msg = "Action with index " + userChoice + " not exist! Choice the correct game!";
-                engine.push(msg);
-                run();
-            }
+            case EXIT -> Exit.start();
+            case GREET -> Greet.start();
+            case EVEN -> Even.start();
+            case CALC -> Calc.start();
+            case GREATEST -> GCD.start();
+            case PROGR -> Progression.start();
+            case PRIME -> Prime.start();
+            default -> engine.push("Action with index " + userChoice + " not exist! Choice the correct game!");
         }
     }
 

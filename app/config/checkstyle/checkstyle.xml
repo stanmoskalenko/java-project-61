@@ -154,7 +154,7 @@
         <!-- Checks for blocks. You know, those {}'s         -->
         <!-- See https://checkstyle.org/config_blocks.html -->
         <module name="AvoidNestedBlocks">
-            <property name="allowInSwitchCase" value="true"/>
+<!--            <property name="allowInSwitchCase" value="true"/>-->
         </module>
         <module name="EmptyBlock"/>
         <module name="LeftCurly"/>
@@ -171,7 +171,7 @@
         </module>
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
-        <!-- <module name="MagicNumber"/> -->
+         <module name="MagicNumber"/>
         <module name="MissingSwitchDefault"/>
         <module name="MultipleVariableDeclarations"/>
         <module name="SimplifyBooleanExpression"/>
@@ -179,7 +179,7 @@
 
         <!-- Checks for class design                         -->
         <!-- See https://checkstyle.org/config_design.html -->
-        <!-- <module name="DesignForExtension"/> -->
+         <module name="DesignForExtension"/>
         <module name="FinalClass"/>
         <!-- <module name="HideUtilityClassConstructor"/> -->
         <module name="InterfaceIsType"/>

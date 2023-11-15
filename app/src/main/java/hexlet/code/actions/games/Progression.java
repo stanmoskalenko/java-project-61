@@ -16,12 +16,10 @@ public class Progression {
     private static final Integer MAX_STEP = 100;
     private static final Integer MAX_RANDOM_INT = 100;
 
-
-
-    private static final Engine ENGINE = new Engine();
+    private static Engine engine = new Engine();
 
     public static void start() {
-        ENGINE.run(GAME_PREVIEW, prepareTrack());
+        engine.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static Map<Integer, Map<String, String>> prepareTrack() {
@@ -49,7 +47,7 @@ public class Progression {
                     question.append(" ").append(nextInt);
                 }
             }
-            var exercise = ENGINE.prepareExercise(question.toString(), Integer.toString(answer));
+            var exercise = engine.prepareExercise(question.toString(), Integer.toString(answer));
             track.put(i, exercise);
         }
 

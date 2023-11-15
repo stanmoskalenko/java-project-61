@@ -1,35 +1,34 @@
 package hexlet.code;
 
-import java.util.Scanner;
+
+import hexlet.code.actions.Actions;
+import hexlet.code.actions.ActionsStorage;
 
 public class App {
 
-    public static void main(String[] args) {
-        var gameChoicePrev = new StringBuilder()
-                .append("Please enter the game number and press Enter.")
-                .append("\n 1 - Greet")
-                .append("\n 2 – Even")
-                .append("\n 0 - Exit")
-                .toString();
-        var sc = new Scanner(System.in);
-        System.out.println(gameChoicePrev);
-        var gameChoice = sc.nextInt();
-        System.out.println("Your choice: " + gameChoice);
+    public static void run() {
+        var engine = new Engine();
+        var actionsStorage = new ActionsStorage();
+        StringBuilder games = new StringBuilder()
+                .append("Please enter the game number and press Enter.");
 
-        switch (gameChoice) {
-            case (1):
-                var greetGame = new GreetGame();
-                greetGame.start();
-                break;
-            case (2):
-                var evenGame = new EvenGame();
-                evenGame.start();
-                break;
-            case (0):
-                Runtime.getRuntime().exit(0);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + gameChoice);
+        for (var game : actionsStorage.getActions()) {
+            games.append("\n ")
+                    .append(game.getIndex())
+                    .append(" – ")
+                    .append(game.getName());
         }
+        var gameChoicePrev = games.toString();
+        engine.push(gameChoicePrev);
+        var userChoice = engine.readString();
+        engine.push("Your choice: " + userChoice);
+
+        actionsStorage.getActions().stream()
+                .filter(action -> action.getIndex().toString().equals(userChoice))
+                .forEach(Actions::start);
+    }
+
+    public static void main(String[] args) {
+        run();
     }
 }

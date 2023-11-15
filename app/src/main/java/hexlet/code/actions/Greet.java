@@ -20,6 +20,6 @@ public class Greet {
 
     public static void start() {
         getUserName();
-        engine.exit();
+        engine.stop();
     }
 }

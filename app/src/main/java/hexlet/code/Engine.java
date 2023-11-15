@@ -55,10 +55,10 @@ public class Engine {
             } else {
                 var msg = String.format(INCORRECT, userAnswer, answer, userName);
                 push(msg);
-                exit();
+                stop();
             }
         }
         push("Congratulations, " + userName + "!");
-        exit();
+        stop();
     }
 }

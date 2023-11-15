@@ -31,7 +31,7 @@ public class Progression {
             var hiddenPosition = random.nextInt(1, progressionLength);
             int answer = 0;
             var question = new StringBuilder();
-            question.append(" ").append(startInt);
+            question.append(startInt);
 
             numbers.add(startInt);
             for (var idx = 0; idx < progressionLength; idx++) {

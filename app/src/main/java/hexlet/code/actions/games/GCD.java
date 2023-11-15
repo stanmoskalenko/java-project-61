@@ -1,43 +1,21 @@
 package hexlet.code.actions.games;
 
 import hexlet.code.Engine;
-import hexlet.code.actions.Actions;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class GCD implements Actions, Game {
-    private final String name;
-    private final Integer index;
-
+public class GCD {
     private static final String GAME_PREVIEW = "Find the greatest common divisor of given numbers.";
-    private static final String GAME_NAME = "GCD";
-    private static final Integer GAME_INDEX = 4;
 
-    private final Engine engine = new Engine();
+    private static Engine engine = new Engine();
 
-    public GCD() {
-        this.name = GAME_NAME;
-        this.index = GAME_INDEX;
-    }
-
-    @Override
-    public void start() {
+    public static void start() {
         engine.run(GAME_PREVIEW, prepareTrack());
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public Integer getIndex() {
-        return index;
-    }
-
-    public String getAnswer(Integer firstOperand, Integer secondOperand) {
+    private static String getAnswer(Integer firstOperand, Integer secondOperand) {
         while (secondOperand != 0) {
             int tmp = firstOperand % secondOperand;
             firstOperand = secondOperand;
@@ -47,8 +25,7 @@ public class GCD implements Actions, Game {
         return Integer.toString(firstOperand);
     }
 
-    @Override
-    public Map<Integer, Map<String, String>> prepareTrack() {
+    private static Map<Integer, Map<String, String>> prepareTrack() {
         Map<Integer, Map<String, String>> track = new HashMap<>();
         var random = new Random();
 

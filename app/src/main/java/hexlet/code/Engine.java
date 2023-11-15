@@ -32,7 +32,7 @@ public class Engine {
         Runtime.getRuntime().exit(0);
     }
 
-    public static boolean checkAnswer(String userAnswer, String answer) {
+    private static boolean checkAnswer(String userAnswer, String answer) {
         return userAnswer.equals(answer);
     }
 

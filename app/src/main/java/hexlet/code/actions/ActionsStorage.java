@@ -4,6 +4,7 @@ package hexlet.code.actions;
 import hexlet.code.actions.games.Calc;
 import hexlet.code.actions.games.Even;
 import hexlet.code.actions.games.GCD;
+import hexlet.code.actions.games.Prime;
 import hexlet.code.actions.games.Progression;
 
 import java.util.Comparator;
@@ -19,7 +20,8 @@ public class ActionsStorage {
                 new Greet(),
                 new Exit(),
                 new GCD(),
-                new Progression());
+                new Progression(),
+                new Prime());
     }
 
     public List<Actions> getActions() {

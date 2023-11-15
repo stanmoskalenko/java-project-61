@@ -12,7 +12,7 @@ public class Exit implements Actions {
     @Override
     public void start() {
         var engine = new Engine();
-        engine.push("👋Bye bye");
+        engine.push("👋 Bye bye");
         engine.stop();
     }
 

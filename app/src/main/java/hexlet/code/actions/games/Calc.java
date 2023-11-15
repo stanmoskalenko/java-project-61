@@ -9,12 +9,15 @@ import java.util.Random;
 
 public class Calc {
     private static final String GAME_PREVIEW = "What is the result of the expression?";
+    private static final Integer MIN_RANDOM_INT = 1;
+    private static final Integer MAX_RANDOM_INT = 100;
+    private static final Integer OPERATIONS_START_IDX = 0;
     private static final List<String> OPERATIONS = List.of("+", "-", "*");
 
-    private static Engine engine = new Engine();
+    private static final Engine ENGINE = new Engine();
 
     public static void start() {
-        engine.run(GAME_PREVIEW, prepareTrack());
+        ENGINE.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static String getAnswer(Integer firstOperand, Integer secondOperand, String operation) {
@@ -31,12 +34,12 @@ public class Calc {
         var random = new Random();
 
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
-            var firstOperand = random.nextInt(1, 100);
-            var secondOperand = random.nextInt(1, 100);
-            var operation = OPERATIONS.get(random.nextInt(0, OPERATIONS.size()));
+            var firstOperand = random.nextInt(MIN_RANDOM_INT, MAX_RANDOM_INT);
+            var secondOperand = random.nextInt(MIN_RANDOM_INT, MAX_RANDOM_INT);
+            var operation = OPERATIONS.get(random.nextInt(OPERATIONS_START_IDX, OPERATIONS.size()));
             var question = firstOperand + " " + operation + " " + secondOperand;
             var answer = getAnswer(firstOperand, secondOperand, operation);
-            var exercise = engine.prepareExercise(question, answer);
+            var exercise = ENGINE.prepareExercise(question, answer);
             track.put(i, exercise);
         }
 

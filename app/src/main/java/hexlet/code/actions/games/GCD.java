@@ -8,11 +8,13 @@ import java.util.Random;
 
 public class GCD {
     private static final String GAME_PREVIEW = "Find the greatest common divisor of given numbers.";
+    private static final Integer MIN_RANDOM_INT = 1;
+    private static final Integer MAX_RANDOM_INT = 100;
 
-    private static Engine engine = new Engine();
+    private static final Engine ENGINE = new Engine();
 
     public static void start() {
-        engine.run(GAME_PREVIEW, prepareTrack());
+        ENGINE.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static String getAnswer(Integer firstOperand, Integer secondOperand) {
@@ -30,11 +32,11 @@ public class GCD {
         var random = new Random();
 
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
-            var firstOperand = random.nextInt(1, 100);
-            var secondOperand = random.nextInt(1, 100);
+            var firstOperand = random.nextInt(MIN_RANDOM_INT, MAX_RANDOM_INT);
+            var secondOperand = random.nextInt(MIN_RANDOM_INT, MAX_RANDOM_INT);
             var question = firstOperand + " " + secondOperand;
             var answer = getAnswer(firstOperand, secondOperand);
-            var exercise = engine.prepareExercise(question, answer);
+            var exercise = ENGINE.prepareExercise(question, answer);
             track.put(i, exercise);
         }
 

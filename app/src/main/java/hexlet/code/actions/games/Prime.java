@@ -11,7 +11,7 @@ public class Prime {
     private static final Integer PRIME_MIN = 1;
     private static final Integer PRIME_MAX = 1000;
 
-    private static Engine engine = new Engine();
+    private static final Engine ENGINE = new Engine();
 
     private static String getAnswer(Integer num) {
         for (int i = 2; i < num; i++) {
@@ -24,7 +24,7 @@ public class Prime {
     }
 
     public static void start() {
-        engine.run(GAME_PREVIEW, prepareTrack());
+        ENGINE.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static Map<Integer, Map<String, String>> prepareTrack() {
@@ -34,7 +34,7 @@ public class Prime {
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
             var question = random.nextInt(PRIME_MIN, PRIME_MAX);
             var answer = getAnswer(question);
-            var exercise = engine.prepareExercise(Integer.toString(question), answer);
+            var exercise = ENGINE.prepareExercise(Integer.toString(question), answer);
             track.put(i, exercise);
         }
 

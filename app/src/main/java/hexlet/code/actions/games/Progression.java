@@ -12,11 +12,16 @@ public class Progression {
     private static final String GAME_PREVIEW = "What number is missing in the progression?";
     private static final Integer PROGRESSION_MIN_ITEMS = 5;
     private static final Integer PROGRESSION_MAX_ITEMS = 10;
+    private static final Integer POSITION_START = 1;
+    private static final Integer MAX_STEP = 100;
+    private static final Integer MAX_RANDOM_INT = 100;
 
-    private static Engine engine = new Engine();
+
+
+    private static final Engine ENGINE = new Engine();
 
     public static void start() {
-        engine.run(GAME_PREVIEW, prepareTrack());
+        ENGINE.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static Map<Integer, Map<String, String>> prepareTrack() {
@@ -25,10 +30,10 @@ public class Progression {
 
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
             List<Integer> numbers = new ArrayList<>();
-            var startInt = random.nextInt(1, 99);
+            var startInt = random.nextInt(POSITION_START, MAX_RANDOM_INT);
             var progressionLength = random.nextInt(PROGRESSION_MIN_ITEMS, PROGRESSION_MAX_ITEMS);
-            var progressionStep = random.nextInt(1, 10);
-            var hiddenPosition = random.nextInt(1, progressionLength);
+            var progressionStep = random.nextInt(POSITION_START, MAX_STEP);
+            var hiddenPosition = random.nextInt(POSITION_START, progressionLength);
             int answer = 0;
             var question = new StringBuilder();
             question.append(startInt);
@@ -44,7 +49,7 @@ public class Progression {
                     question.append(" ").append(nextInt);
                 }
             }
-            var exercise = engine.prepareExercise(question.toString(), Integer.toString(answer));
+            var exercise = ENGINE.prepareExercise(question.toString(), Integer.toString(answer));
             track.put(i, exercise);
         }
 

@@ -36,6 +36,7 @@ public final class Engine {
     public static void run(String gameRule, List<Map<String, String>> track) {
         var userName = greet();
         push(gameRule);
+        var success = true;
 
         for (var i = 0; i < ROUND_COUNT; i++) {
             var exercise = track.get(i);
@@ -50,9 +51,12 @@ public final class Engine {
                 push("Correct!");
             } else {
                 push(String.format(INCORRECT, userAnswer, answer, userName));
-                throw new RuntimeException();
+                success = false;
+                break;
             }
         }
-        push("Congratulations, " + userName + "!");
+        if (success) {
+            push("Congratulations, " + userName + "!");
+        }
     }
 }

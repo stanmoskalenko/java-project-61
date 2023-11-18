@@ -1,8 +1,8 @@
-package hexlet.code.actions.games;
+package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -14,10 +14,8 @@ public class Calc {
     private static final Integer OPERATIONS_START_IDX = 0;
     private static final List<String> OPERATIONS = List.of("+", "-", "*");
 
-    private static Engine engine = new Engine();
-
     public static void start() {
-        engine.run(GAME_PREVIEW, prepareTrack());
+        Engine.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static String getAnswer(Integer firstOperand, Integer secondOperand, String operation) {
@@ -25,12 +23,12 @@ public class Calc {
             case ("+") -> Integer.toString(firstOperand + secondOperand);
             case ("-") -> Integer.toString(firstOperand - secondOperand);
             case ("*") -> Integer.toString(firstOperand * secondOperand);
-            default -> String.valueOf(firstOperand / secondOperand);
+            default -> throw new IllegalArgumentException("Unexpected operation!");
         };
     }
 
-    private static Map<Integer, Map<String, String>> prepareTrack() {
-        Map<Integer, Map<String, String>> track = new HashMap<>();
+    private static List<Map<String, String>> prepareTrack() {
+        List<Map<String, String>> track = new ArrayList<>();
         var random = new Random();
 
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
@@ -39,8 +37,8 @@ public class Calc {
             var operation = OPERATIONS.get(random.nextInt(OPERATIONS_START_IDX, OPERATIONS.size()));
             var question = firstOperand + " " + operation + " " + secondOperand;
             var answer = getAnswer(firstOperand, secondOperand, operation);
-            var exercise = engine.prepareExercise(question, answer);
-            track.put(i, exercise);
+            var exercise = Engine.prepareExercise(question, answer);
+            track.add(exercise);
         }
 
         return track;

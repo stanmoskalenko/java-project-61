@@ -1,9 +1,8 @@
-package hexlet.code.actions.games;
+package hexlet.code.games;
 
 import hexlet.code.Engine;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -16,14 +15,12 @@ public class Progression {
     private static final Integer MAX_STEP = 100;
     private static final Integer MAX_RANDOM_INT = 100;
 
-    private static Engine engine = new Engine();
-
     public static void start() {
-        engine.run(GAME_PREVIEW, prepareTrack());
+        Engine.run(GAME_PREVIEW, prepareTrack());
     }
 
-    private static Map<Integer, Map<String, String>> prepareTrack() {
-        Map<Integer, Map<String, String>> track = new HashMap<>();
+    private static List<Map<String, String>> prepareTrack() {
+        List<Map<String, String>> track = new ArrayList<>();
         var random = new Random();
 
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
@@ -47,8 +44,8 @@ public class Progression {
                     question.append(" ").append(nextInt);
                 }
             }
-            var exercise = engine.prepareExercise(question.toString(), Integer.toString(answer));
-            track.put(i, exercise);
+            var exercise = Engine.prepareExercise(question.toString(), Integer.toString(answer));
+            track.add(exercise);
         }
 
         return track;

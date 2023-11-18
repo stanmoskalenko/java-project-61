@@ -1,8 +1,9 @@
-package hexlet.code.actions.games;
+package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -11,10 +12,8 @@ public class GCD {
     private static final Integer MIN_RANDOM_INT = 1;
     private static final Integer MAX_RANDOM_INT = 100;
 
-    private static Engine engine = new Engine();
-
     public static void start() {
-        engine.run(GAME_PREVIEW, prepareTrack());
+        Engine.run(GAME_PREVIEW, prepareTrack());
     }
 
     private static String getAnswer(Integer firstOperand, Integer secondOperand) {
@@ -27,8 +26,8 @@ public class GCD {
         return Integer.toString(firstOperand);
     }
 
-    private static Map<Integer, Map<String, String>> prepareTrack() {
-        Map<Integer, Map<String, String>> track = new HashMap<>();
+    private static List<Map<String, String>> prepareTrack() {
+        List<Map<String, String>> track = new ArrayList<>();
         var random = new Random();
 
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
@@ -36,8 +35,8 @@ public class GCD {
             var secondOperand = random.nextInt(MIN_RANDOM_INT, MAX_RANDOM_INT);
             var question = firstOperand + " " + secondOperand;
             var answer = getAnswer(firstOperand, secondOperand);
-            var exercise = engine.prepareExercise(question, answer);
-            track.put(i, exercise);
+            var exercise = Engine.prepareExercise(question, answer);
+            track.add(exercise);
         }
 
         return track;

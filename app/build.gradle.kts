@@ -1,7 +1,6 @@
 plugins {
     application
     checkstyle
-    id("java")
 }
 
 group = "org.app"

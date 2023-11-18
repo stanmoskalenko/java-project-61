@@ -49,7 +49,8 @@ public final class Engine {
             if (userAnswer.toLowerCase().equals(answer)) {
                 push("Correct!");
             } else {
-                throw new IllegalArgumentException(String.format(INCORRECT, userAnswer, answer, userName));
+                push(String.format(INCORRECT, userAnswer, answer, userName));
+                throw new RuntimeException();
             }
         }
         push("Congratulations, " + userName + "!");

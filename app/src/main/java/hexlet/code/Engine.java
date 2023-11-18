@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public final class Engine {
-
     public static final int ROUND_COUNT = 3;
     private static final String HELLO_PREVIEW = "Welcome to the Brain Games!\nMay I have your name?";
     private static final String INCORRECT = "'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, %s!!";
@@ -19,16 +18,10 @@ public final class Engine {
         System.out.println(msg);
     }
 
-    public static Map<String, String> prepareExercise(String question, String answer) {
-        return Map.of(
-                "question", question,
-                "answer", answer);
-    }
-
     public static String greet() {
-        Engine.push(HELLO_PREVIEW);
+        push(HELLO_PREVIEW);
         var userName = readString();
-        Engine.push("Hello, " + userName + "!");
+        push("Hello, " + userName + "!");
 
         return userName;
     }

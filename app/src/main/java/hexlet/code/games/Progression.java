@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class Progression {
-    private static final String GAME_PREVIEW = "What number is missing in the progression?";
+    private static final String GAME_RULE = "What number is missing in the progression?";
     private static final Integer PROGRESSION_MIN_ITEMS = 5;
     private static final Integer PROGRESSION_MAX_ITEMS = 10;
     private static final Integer POSITION_START = 1;
@@ -16,10 +16,6 @@ public class Progression {
     private static final Integer MAX_RANDOM_INT = 100;
 
     public static void start() {
-        Engine.run(GAME_PREVIEW, prepareTrack());
-    }
-
-    private static List<Map<String, String>> prepareTrack() {
         List<Map<String, String>> track = new ArrayList<>();
         var random = new Random();
 
@@ -44,10 +40,11 @@ public class Progression {
                     question.append(" ").append(nextInt);
                 }
             }
-            var exercise = Engine.prepareExercise(question.toString(), Integer.toString(answer));
+            var exercise = Map.of(
+                    "question", question.toString(),
+                    "answer", Integer.toString(answer));
             track.add(exercise);
         }
-
-        return track;
+        Engine.run(GAME_RULE, track);
     }
 }

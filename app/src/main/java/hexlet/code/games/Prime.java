@@ -8,35 +8,30 @@ import java.util.Map;
 import java.util.Random;
 
 public class Prime {
-    private static final String GAME_PREVIEW = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static final String GAME_RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private static final Integer PRIME_MIN = 1;
     private static final Integer PRIME_MAX = 1000;
 
-    private static String getAnswer(Integer num) {
-        for (int i = 2; i < num; i++) {
-            if (num % i == 0) {
-                return "no";
-            }
-        }
-
-        return "yes";
-    }
-
     public static void start() {
-        Engine.run(GAME_PREVIEW, prepareTrack());
-    }
-
-    private static List<Map<String, String>> prepareTrack() {
         List<Map<String, String>> track = new ArrayList<>();
         var random = new Random();
 
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
+            var answer = "yes";
             var question = random.nextInt(PRIME_MIN, PRIME_MAX);
-            var answer = getAnswer(question);
-            var exercise = Engine.prepareExercise(Integer.toString(question), answer);
+
+            for (int idx = 2; idx < question; idx++) {
+                if (question % idx == 0) {
+                    answer = "no";
+                    break;
+                }
+            }
+            var exercise = Map.of(
+                    "question", Integer.toString(question),
+                    "answer", answer);
             track.add(exercise);
         }
 
-        return track;
+        Engine.run(GAME_RULE, track);
     }
 }

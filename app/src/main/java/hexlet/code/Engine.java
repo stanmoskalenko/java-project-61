@@ -8,48 +8,38 @@ public final class Engine {
     public static final int ROUND_COUNT = 3;
     private static final String HELLO_PREVIEW = "Welcome to the Brain Games!\nMay I have your name?";
     private static final String INCORRECT = "'%s' is wrong answer ;(. Correct answer was '%s'.\nLet's try again, %s!!";
-    private static final Scanner SC = new Scanner(System.in);
+    public static final Scanner SC = new Scanner(System.in);
 
-    public static String readString() {
-        return SC.next().trim();
-    }
+    public static void run(String gameRule, List<Map<String, String>> questionAndAnswers) {
+        System.out.println(HELLO_PREVIEW);
+        var userName = SC.next().trim();
+        System.out.println("Hello, " + userName + "!");
 
-    public static void push(String msg) {
-        System.out.println(msg);
-    }
+        if (questionAndAnswers != null) {
+            System.out.println(gameRule);
 
-    public static String greet() {
-        push(HELLO_PREVIEW);
-        var userName = readString();
-        push("Hello, " + userName + "!");
+            var success = true;
 
-        return userName;
-    }
+            for (var i = 0; i < ROUND_COUNT; i++) {
+                var exercise = questionAndAnswers.get(i);
+                var question = exercise.get("question");
+                var answer = exercise.get("answer");
 
-    public static void run(String gameRule, List<Map<String, String>> track) {
-        var userName = greet();
-        push(gameRule);
-        var success = true;
+                System.out.println("Question: " + question);
+                var userAnswer = SC.next().trim();
+                System.out.println("Your answer: " + userAnswer);
 
-        for (var i = 0; i < ROUND_COUNT; i++) {
-            var exercise = track.get(i);
-            var question = exercise.get("question");
-            var answer = exercise.get("answer");
-
-            push("Question: " + question);
-            var userAnswer = readString();
-            push("Your answer: " + userAnswer);
-
-            if (userAnswer.toLowerCase().equals(answer)) {
-                push("Correct!");
-            } else {
-                push(String.format(INCORRECT, userAnswer, answer, userName));
-                success = false;
-                break;
+                if (userAnswer.toLowerCase().equals(answer)) {
+                    System.out.println("Correct!");
+                } else {
+                    System.out.printf(INCORRECT, userAnswer, answer, userName);
+                    success = false;
+                    break;
+                }
             }
-        }
-        if (success) {
-            push("Congratulations, " + userName + "!");
+            if (success) {
+                System.out.println("Congratulations, " + userName + "!");
+            }
         }
     }
 }

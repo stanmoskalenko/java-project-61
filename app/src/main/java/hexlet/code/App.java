@@ -28,12 +28,12 @@ public class App {
                 .append("\n 6 – Prime")
                 .toString();
 
-        Engine.push(menu);
-        var userChoice = Engine.readString();
+        System.out.println(menu);
+        var userChoice = Engine.SC.next().trim();
 
         switch (userChoice) {
-            case EXIT -> Engine.push("👋 Bye bye");
-            case GREET -> Engine.greet();
+            case EXIT -> System.out.println("👋 Bye bye");
+            case GREET -> Cli.run();
             case EVEN -> Even.start();
             case CALC -> Calc.start();
             case GREATEST -> GCD.start();
@@ -44,5 +44,6 @@ public class App {
                             + userChoice
                             + " not exist! Choice the correct game!");
         }
+        Engine.SC.close();
     }
 }

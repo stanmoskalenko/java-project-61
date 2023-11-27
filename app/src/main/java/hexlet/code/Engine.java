@@ -13,6 +13,7 @@ public final class Engine {
     public static void run(String gameRule, List<Map<String, String>> questionAndAnswers) {
         System.out.println(HELLO_PREVIEW);
         var userName = SC.next().trim();
+        SC.close();
         System.out.println("Hello, " + userName + "!");
 
         if (questionAndAnswers != null) {
@@ -27,6 +28,7 @@ public final class Engine {
 
                 System.out.println("Question: " + question);
                 var userAnswer = SC.next().trim();
+                SC.close();
                 System.out.println("Your answer: " + userAnswer);
 
                 if (userAnswer.toLowerCase().equals(answer)) {

@@ -14,11 +14,11 @@ public class Calc {
     private static final Integer OPERATIONS_START_IDX = 0;
     private static final List<String> OPERATIONS = List.of("+", "-", "*");
 
-    private static String calculate(String operation, Integer firstOperand, Integer secondOperand) {
+    private static int calculate(String operation, Integer firstOperand, Integer secondOperand) {
         return switch (operation) {
-            case ("+") -> Integer.toString(firstOperand + secondOperand);
-            case ("-") -> Integer.toString(firstOperand - secondOperand);
-            case ("*") -> Integer.toString(firstOperand * secondOperand);
+            case ("+") -> firstOperand + secondOperand;
+            case ("-") -> firstOperand - secondOperand;
+            case ("*") -> firstOperand * secondOperand;
             default -> throw new IllegalArgumentException("Unexpected operation!");
         };
     }
@@ -33,7 +33,7 @@ public class Calc {
             var answer = calculate(operation, firstOperand, secondOperand);
             var exercise = Map.of(
                     "question", question,
-                    "answer", answer);
+                    "answer", Integer.toString(answer));
             track.add(exercise);
         }
 

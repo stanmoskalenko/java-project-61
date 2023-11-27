@@ -9,17 +9,17 @@ import java.util.Map;
 
 public class GCD {
     private static final String GAME_RULE = "Find the greatest common divisor of given numbers.";
-    private static final Integer MIN_RANDOM_INT = 1;
-    private static final Integer MAX_RANDOM_INT = 100;
+    private static final int MIN_RANDOM_INT = 1;
+    private static final int MAX_RANDOM_INT = 100;
 
-    private static String getGratestDevisor(Integer firstOperand, Integer secondOperand) {
+    private static int getGratestDevisor(int firstOperand, int secondOperand) {
         while (secondOperand != 0) {
             int tmp = firstOperand % secondOperand;
             firstOperand = secondOperand;
             secondOperand = tmp;
         }
 
-        return Integer.toString(firstOperand);
+        return firstOperand;
     }
 
     public static void start() {
@@ -31,7 +31,7 @@ public class GCD {
             var answer = getGratestDevisor(firstOperand, secondOperand);
             var exercise = Map.of(
                     "question", question,
-                    "answer", answer);
+                    "answer", Integer.toString(answer));
             track.add(exercise);
         }
 

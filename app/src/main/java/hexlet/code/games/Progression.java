@@ -13,8 +13,8 @@ public class Progression {
     private static final Integer PROGRESSION_MIN_ITEMS = 5;
     private static final Integer PROGRESSION_MAX_ITEMS = 10;
     private static final Integer POSITION_START = 1;
-    private static final Integer MAX_STEP = 100;
-    private static final Integer MAX_RANDOM_INT = 100;
+    private static final Integer MAX_STEP = 10;
+    private static final Integer MAX_RANDOM_INT = 10;
 
     private static List<Integer> prepareProgression(
             Integer startInt,
@@ -32,19 +32,17 @@ public class Progression {
     }
 
     public static void start() {
-        List<Map<String, String>> track = new ArrayList<>();
+        List<Map<String, String>> questionAndAnswers = new ArrayList<>();
         int answer = 0;
-        var question = new StringBuilder();
         for (var i = 0; i < Engine.ROUND_COUNT; i++) {
+            var question = new StringBuilder();
             int startInt = Utils.getRandomInt(POSITION_START, MAX_RANDOM_INT);
             int progressionLength = Utils.getRandomInt(PROGRESSION_MIN_ITEMS, PROGRESSION_MAX_ITEMS);
             int progressionStep = Utils.getRandomInt(POSITION_START, MAX_STEP);
             int hiddenPosition = Utils.getRandomInt(POSITION_START, progressionLength);
-
-            question.append(startInt);
             var progression = prepareProgression(startInt, progressionLength, progressionStep);
 
-            for (var idx = 0; idx < progressionLength; idx++) {
+            for (var idx = 0; idx <= progressionLength; idx++) {
                 var number = progression.get(idx);
                 if (idx == hiddenPosition) {
                     answer = number;
@@ -56,8 +54,8 @@ public class Progression {
             var exercise = Map.of(
                     "question", question.toString(),
                     "answer", Integer.toString(answer));
-            track.add(exercise);
+            questionAndAnswers.add(exercise);
         }
-        Engine.run(GAME_RULE, track);
+        Engine.run(GAME_RULE, questionAndAnswers);
     }
 }

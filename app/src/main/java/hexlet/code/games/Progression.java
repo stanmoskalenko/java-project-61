@@ -41,6 +41,7 @@ public class Progression {
             int progressionStep = Utils.getRandomInt(POSITION_START, MAX_STEP);
             int hiddenPosition = Utils.getRandomInt(POSITION_START, progressionLength);
 
+            question.append(startInt);
             var progression = prepareProgression(startInt, progressionLength, progressionStep);
 
             for (var idx = 0; idx < progressionLength; idx++) {

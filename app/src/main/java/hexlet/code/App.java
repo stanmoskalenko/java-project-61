@@ -30,7 +30,6 @@ public class App {
 
         System.out.println(menu);
         var userChoice = Engine.SC.next().trim();
-        Engine.SC.close();
 
         switch (userChoice) {
             case EXIT -> System.out.println("👋 Bye bye");
@@ -45,5 +44,7 @@ public class App {
                             + userChoice
                             + " not exist! Choice the correct game!");
         }
+
+        Engine.SC.close();
     }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Progression {
     private static final String GAME_RULE = "What number is missing in the progression?";
-    private static final String HIDDEN_POSITION = " ..";
+    private static final String HIDDEN_POSITION = ".. ";
     private static final Integer PROGRESSION_MIN_ITEMS = 5;
     private static final Integer PROGRESSION_MAX_ITEMS = 10;
     private static final Integer POSITION_START = 1;
@@ -48,7 +48,7 @@ public class Progression {
                     answer = number;
                     question.append(HIDDEN_POSITION);
                 } else {
-                    question.append(" ").append(number);
+                    question.append(number).append(" ");
                 }
             }
             var exercise = Map.of(
